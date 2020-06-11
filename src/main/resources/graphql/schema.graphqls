@@ -1,0 +1,22 @@
+type Cricketer {
+	id: ID,
+	name: String!,
+	age: Int!,
+	matches: Int!,
+	runs: Int!,
+	wickets: Int!
+}
+
+type Query {
+	getAllCricketers: [Cricketer]!
+	getMostExperienced: Cricketer
+	#getMostRunScorer: Cricketer
+	#getMostWicketTaker: Cricketer
+	getCricketerDetailsViaName(cricketerName: String!): [Cricketer]
+	getTotalCricketersCount: Int
+}
+
+type Mutation {
+	createCricketer(name: String!, age: Int!): Cricketer
+	updateCricketer(id: ID!, runs: Int!, wickets: Int!): Cricketer
+}

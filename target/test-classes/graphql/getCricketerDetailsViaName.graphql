@@ -1,0 +1,10 @@
+query getCricketerDetailsViaName($cricketerName: String!){
+    cricketers: getCricketerDetailsViaName(cricketerName: $cricketerName) {
+        id
+        name
+        age
+        matches
+        runs
+        wickets
+    }
+}

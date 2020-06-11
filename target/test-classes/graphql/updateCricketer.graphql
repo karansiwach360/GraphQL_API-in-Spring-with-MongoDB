@@ -1,0 +1,10 @@
+mutation updateCricketer($id: ID!, $runs: Int!, $wickets: Int!){
+	cricketer: updateCricketer(id: $id, runs: $runs, wickets: $wickets){
+		id
+		name
+		age
+		matches
+		runs
+		wickets
+	}
+}

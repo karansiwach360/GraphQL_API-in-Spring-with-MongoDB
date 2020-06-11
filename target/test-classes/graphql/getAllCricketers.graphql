@@ -1,0 +1,10 @@
+query getAllCricketers{
+    cricketers: getAllCricketers {
+        id
+        name
+        age
+        matches
+        runs
+        wickets
+    }
+}

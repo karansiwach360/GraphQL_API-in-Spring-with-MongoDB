@@ -1,0 +1,10 @@
+mutation createCricketer($name: String!, $age: Int!){
+	cricketer: createCricketer(name: $name, age: $age){
+		id
+		name
+		age
+		matches
+		runs
+		wickets
+	}
+}
