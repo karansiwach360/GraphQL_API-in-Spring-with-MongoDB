@@ -29,9 +29,9 @@ public class CricketerQuery implements GraphQLQueryResolver {
     }
 
     public Cricketer getMostExperienced() {
-        Cricketer cricketer = cricketerRepository.findTopByMatchesAfterOrderByMatchesDesc(0);
+        Cricketer cricketer = cricketerRepository.findTopByMatchesAfterOrderByMatchesDesc(-1);
         //List<Cricketer> result = cricketers.collect(Collectors.toList());
-        //System.out.println(cricketer.getName());
+        System.out.println(cricketer.getName());
         return cricketer;
     }
 

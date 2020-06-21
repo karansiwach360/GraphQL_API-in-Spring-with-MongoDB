@@ -30,9 +30,11 @@ import java.io.IOException;
 import static graphql.Assert.assertNotNull;
 import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.any;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -67,7 +69,35 @@ public class ApplicationTest {
     @BeforeEach
     public void init() {
         cricketer = new Cricketer("Steve", 31, 0, 0, 0);
+        //System.out.println(cricketer.getId());
         cricketer.setId("ABisTheBest");
+    }
+
+    @Test
+    //@QueryTest
+    public void createCricketer() throws IOException {
+        when(cricketerRepository.save(any(Cricketer.class))).thenReturn(cricketer);
+        //when(cricketerRepository.findAll()).thenReturn(Collections.singletonList(cricketer));
+        //when(cricketerQuery.getAllCricketers()).thenReturn(Collections.singletonList(cricketer));
+
+        ObjectNode variables = new ObjectMapper().createObjectNode();
+        variables.put("name", cricketer.getName());
+        variables.put("age", cricketer.getAge());
+
+        GraphQLResponse response = graphQLTestTemplate.perform(
+                "graphql/createCricketer.graphql", variables);
+
+        System.out.println(response.context().jsonString());
+
+
+        verify(cricketerRepository).save(any(Cricketer.class));
+        //verify(cricketerQuery).getAllCricketers();
+        Cricketer tmp = response.context().read("$.data.cricketer", Cricketer.class);
+
+        System.out.println(tmp.getId());
+
+        assertEquals(cricketer, tmp);
+
     }
 
     @Test
