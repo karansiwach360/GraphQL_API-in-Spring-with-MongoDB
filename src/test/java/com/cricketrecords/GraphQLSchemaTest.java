@@ -34,7 +34,6 @@ public class GraphQLSchemaTest {
     @MockBean
     private CricketerMutation cricketerMutation;
 
-
     private Cricketer cricketer;
 
     @MockBean
@@ -94,6 +93,11 @@ public class GraphQLSchemaTest {
         System.out.println(variables);
         when(cricketerMutation.updateCricketer("heywhatsup", new Integer(3), new Integer(3)))
                 .thenThrow(new Exception());
+
+        response = graphQLTestTemplate.perform("graphql/updateCricketer.graphql",
+                variables);
+        System.out.println(response.context().read("$.data.cricketer",Cricketer.class));
+        assertNull(response.context().read("$.data.cricketer",Cricketer.class));
     }
 
     @Test
