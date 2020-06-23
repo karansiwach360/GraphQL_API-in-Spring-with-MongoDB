@@ -2,12 +2,10 @@ package com.cricketrecords;
 
 import graphql.kickstart.tools.GraphQLQueryResolver;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.Optional;
 
 @Component
 public class CricketerQuery implements GraphQLQueryResolver {
@@ -28,11 +26,14 @@ public class CricketerQuery implements GraphQLQueryResolver {
         return cricketers;
     }
 
-    public Cricketer getMostExperienced() {
-        Cricketer cricketer = cricketerRepository.findTopByMatchesAfterOrderByMatchesDesc(-1);
-        //List<Cricketer> result = cricketers.collect(Collectors.toList());
-        System.out.println(cricketer.getName());
-        return cricketer;
+    public Cricketer getMostExperienced() throws Exception{
+        Optional<Cricketer> cricketer = cricketerRepository.findTopByMatchesAfterOrderByMatchesDesc(-1);
+        if(cricketer.isPresent()) {
+            Cricketer result = cricketer.get();
+            System.out.println(result.getName());
+            return result;
+        }
+        throw new Exception("Empty List");
     }
 
     public Long getTotalCricketersCount() {

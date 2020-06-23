@@ -26,12 +26,9 @@ public class CricketerMutation implements GraphQLMutationResolver {
         Optional<Cricketer> cricketer = cricketerRepository.findById(id);
         if(cricketer.isPresent()) {
             Cricketer withCurrentStats = cricketer.get();
-            //cricketerRepository.deleteById(id);
             withCurrentStats.setMatches(withCurrentStats.getMatches()+1);
             withCurrentStats.setRuns(withCurrentStats.getRuns()+runs);
             withCurrentStats.setWickets(withCurrentStats.getWickets()+wickets);
-            //Cricketer withUpdatedStats = new Cricketer(withCurrentStats.getName(), withCurrentStats.getAge(), withCurrentStats.getMatches()+1,
-             //       withCurrentStats.getRuns()+runs, withCurrentStats.getWickets()+wickets);
             return cricketerRepository.save(withCurrentStats);
         }
         throw new Exception("Mitch Marsh and one with ID " + id + " not found");

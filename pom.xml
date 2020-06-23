@@ -23,26 +23,23 @@
     </properties>
 
     <dependencies>
-        <!-- For SpringBootServletInitializer -->
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- Spring MongoDB -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
         </dependency>
 
-        <!--     graphql-spring-boot-starter   -->
         <dependency>
             <groupId>com.graphql-java-kickstart</groupId>
             <artifactId>graphql-spring-boot-starter</artifactId>
             <version>7.0.1</version>
         </dependency>
 
-        <!--  For testing   -->
         <dependency>
             <groupId>com.graphql-java-kickstart</groupId>
             <artifactId>graphql-spring-boot-starter-test</artifactId>
@@ -50,14 +47,12 @@
             <scope>test</scope>
         </dependency>
 
-        <!--  Automatic schema configuration  -->
         <dependency>
             <groupId>com.graphql-java-kickstart</groupId>
             <artifactId>graphql-java-tools</artifactId>
             <version>6.0.2</version>
         </dependency>
 
-        <!-- to embed GraphiQL tool -->
         <dependency>
             <groupId>com.graphql-java-kickstart</groupId>
             <artifactId>graphiql-spring-boot-starter</artifactId>
@@ -70,14 +65,13 @@
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
         </dependency>
-        <!-- For Automatic Restart Feature: DevTools -->
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <optional>true</optional>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.powermock/powermock-api-mockito2 -->
         <dependency>
             <groupId>org.powermock</groupId>
             <artifactId>powermock-api-mockito2</artifactId>
@@ -85,8 +79,6 @@
             <scope>test</scope>
         </dependency>
 
-
-        <!-- https://mvnrepository.com/artifact/org.powermock/powermock-module-junit4 -->
         <dependency>
             <groupId>org.powermock</groupId>
             <artifactId>powermock-module-junit4</artifactId>
