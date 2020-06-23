@@ -82,7 +82,7 @@ public class GraphQLSchemaTest {
         GraphQLResponse response = graphQLTestTemplate.perform("graphql/updateCricketer.graphql",
                 variables);
 
-        verify(cricketerMutation).updateCricketer(cricketer.getId(), new Integer(3), new Integer(3));
+        verify(cricketerMutation).updateCricketer(cricketer.getId(), 3, 3);
         System.out.println(response.context().jsonString());
 
         assertEquals(tmp, response.context().read("$.data.cricketer", Cricketer.class));
@@ -91,7 +91,7 @@ public class GraphQLSchemaTest {
         variables.put("runs", cricketer.getRuns() + 3);
         variables.put("wickets", cricketer.getWickets() + 3);
         System.out.println(variables);
-        when(cricketerMutation.updateCricketer("heywhatsup", new Integer(3), new Integer(3)))
+        when(cricketerMutation.updateCricketer("heywhatsup", 3, 3))
                 .thenThrow(new Exception());
 
         response = graphQLTestTemplate.perform("graphql/updateCricketer.graphql",

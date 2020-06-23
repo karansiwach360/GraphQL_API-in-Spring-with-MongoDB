@@ -17,7 +17,7 @@ public class CricketerMutation implements GraphQLMutationResolver {
     }
 
     public Cricketer createCricketer(final String name, final Integer age) {
-        Cricketer cricketer = new Cricketer(name, age, new Integer(0), new Integer(0), new Integer(0));
+        Cricketer cricketer = new Cricketer(name, age, 0, 0, 0);
         return cricketerRepository.save(cricketer);
     }
 
